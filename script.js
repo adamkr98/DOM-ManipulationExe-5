@@ -11,7 +11,7 @@ const getElapsedTime = () => {
 
 
 let ul = document.querySelector("ul");
-let array = [];
+
 
 // let isFunctionCalled = false;
 
@@ -32,33 +32,111 @@ const clickOnSquare = (e) => {
     let violet = document.querySelector(".violet");
     let orange = document.querySelector(".orange");
 
+    
+
     green.addEventListener("click", () => {
         let newSquare = document.createElement("div");
+
+        newSquare.addEventListener("click", () => {
+            alert("green");
+        });
         
         newSquare.classList.add("displayedSquare", "green");
        
         displayedSquareWrapper.appendChild(newSquare);
+
+        document.addEventListener("keydown", (event) => {
+            if( event.code === "KeyS" ) {
+                newSquare.remove();
+           
+          };
+        }); 
     });
 
     violet.addEventListener("click", () => {
         let newSquare = document.createElement("div");
+
+        newSquare.addEventListener("click", () => {
+            alert("violet");
+        });
         
         newSquare.classList.add("displayedSquare", "violet");
        
         displayedSquareWrapper.appendChild(newSquare);
+
+        document.addEventListener("keydown", (event) => {
+            if( event.code === "KeyS" ) {
+                newSquare.remove();
+           
+          };
+        }); 
     });
 
     orange.addEventListener("click", () => {
         let newSquare = document.createElement("div");
+
+        newSquare.addEventListener("click", (event) => {
+            alert("orange");
+        });
         
         newSquare.classList.add("displayedSquare", "orange");
        
         displayedSquareWrapper.appendChild(newSquare);
+
+        document.addEventListener("keydown", (event) => {
+            if( event.code === "KeyS" ) {
+                newSquare.remove();
+           
+          };
+        });
     });
 
+    let randomBackgroundColor = () => {
+        let r = Math.floor(Math.random() * 256 );
+        let g = Math.floor(Math.random() * 256 );
+        let b = Math.floor(Math.random() * 256 );
+
+        let randomColor = "rgb(" + r + "," + g + "," + b + ")";
+        return randomColor;
+    };
+    // console.log(randomBackgroundColor());
    
+    
+    document.addEventListener("keydown", (event) => {
+
+        if( event.key === " " ) {
+
+            document.body.style.backgroundColor = randomBackgroundColor();
+            
+            let li = document.createElement("li");
+            li.innerHTML =  "Spacebar has been clicked";
+            ul.appendChild(li); 
+                    
+        };   
+    });
+
+    document.addEventListener("keydown", (event) => {
 
 
+
+        if( event.code === "KeyL" ) {
+
+            let li = document.querySelector("li");
+
+                if( li ) {
+                    li.remove();
+                };
+        };
+
+       
+        
+    });
+  
+     
+
+   
+    
+   
 
 for (let actionSquare of actionSquares) {
     actionSquare.addEventListener('click', clickOnSquare);
