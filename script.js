@@ -1,7 +1,6 @@
+let displayedSquareWrapper = document.querySelector(".displayedsquare-wrapper");
 
-let displayedSquare = document.createElement("div");
-displayedSquare.classList.add(".displayedSquare-wrapper");
-
+const actionSquares = document.querySelectorAll('.actionsquare')
 
 
 const _initTime = Date.now()
@@ -12,8 +11,13 @@ const getElapsedTime = () => {
 
 
 let ul = document.querySelector("ul");
+let array = [];
+
+// let isFunctionCalled = false;
 
 const clickOnSquare = (e) => {
+    // isFunctionCalled = true;
+
     let colorName = e.target.classList[1];
     let time = getElapsedTime();
 
@@ -22,13 +26,46 @@ const clickOnSquare = (e) => {
             li.innerHTML = "[" + time + "]" + " " + "Created a new " + e.target.classList[ 1 ] + " " + "square";
             ul.appendChild(li);
     };
+    
+    let square = document.querySelector(".displayedSquare");
+    let green = document.querySelector(".green");
+    let violet = document.querySelector(".violet");
+    let orange = document.querySelector(".orange");
+
+    green.addEventListener("click", () => {
+        let newSquare = document.createElement("div");
+        
+        newSquare.classList.add("displayedSquare", "green");
+       
+        displayedSquareWrapper.appendChild(newSquare);
+    });
+
+    violet.addEventListener("click", () => {
+        let newSquare = document.createElement("div");
+        
+        newSquare.classList.add("displayedSquare", "violet");
+       
+        displayedSquareWrapper.appendChild(newSquare);
+    });
+
+    orange.addEventListener("click", () => {
+        let newSquare = document.createElement("div");
+        
+        newSquare.classList.add("displayedSquare", "orange");
+       
+        displayedSquareWrapper.appendChild(newSquare);
+    });
+
+   
 
 
-const actionSquares = document.querySelectorAll('.actionsquare')
+
 for (let actionSquare of actionSquares) {
-  actionSquare.addEventListener('click', clickOnSquare);
+    actionSquare.addEventListener('click', clickOnSquare);
 
-}
+        
+    };
+       
 
 
     

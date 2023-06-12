@@ -3,7 +3,7 @@ body{
     transition: .3s;
   }
   
-  .actionsquare, .displayedsquare{
+  .actionsquare, .displayedSquare{
     margin: 25px;
     height: 50px;
     width: 50px;
